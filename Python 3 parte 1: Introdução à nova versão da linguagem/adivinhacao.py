@@ -1,9 +1,12 @@
+import random
 print('*********************************')
 print('BEM VINDO NO JOGO DE ADIVINHAÇÃO!')
 print('*********************************')
 print('Escolha numeros de 1 a 100')
 
-numero_secreto = 42
+# gerar um numero aleatório > 0 e <= 100 
+numero_secreto = random.randrange(1, 101)
+print(numero_secreto)
 total_de_tentativas = 3
 
 # for, vamos iniciar a rodada com 1 e ir incrementando de 1 a 1 até 3. Porem o for
