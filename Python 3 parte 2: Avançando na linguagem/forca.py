@@ -15,7 +15,7 @@ def jogar():
     # de registro ja existente, portanto um set não contem indece.
 
     palavra_secreta = carrega_palavra_secreta()
-    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta = palavra_secreta)
     enforcou = False
     acertou = False
     erros = 0
