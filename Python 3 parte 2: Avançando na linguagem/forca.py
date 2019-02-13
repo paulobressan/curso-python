@@ -1,3 +1,5 @@
+import os
+
 def jogar():
     print('*********************************')
     print('***BEM VINDO NO JOGO DE FORCA!***')
@@ -13,24 +15,41 @@ def jogar():
     # Set, o set é utilizado quando temos uma coleção de dados que não pode se repetir, o set ignora a inserção
     # de registro ja existente, portanto um set não contem indece.
 
-    palavra_secreta = 'banana'
+    arquivo = open(f'{os.getcwd()}/Python 3 parte 2: Avançando na linguagem/palavras.txt', 'r')
+    #iniciar um array com os valores do arquivo e usar o strip para remover espaços e caracter como /n no inicio e no final
+    palavras = [linha.strip() for linha in arquivo]
+    arquivo.close()
+    print(palavras)
+
+    palavra_secreta = 'banana'.upper()
     # Criando uma lista
-    letras_acertadas = ['_', '_', '_', '_', '_', '_']
+    letras_acertadas = ['_' for letra in palavra_secreta]
     enforcou = False
     acertou = False
+    erros = 0
 
     # enquanto não enforcou e não acertou
     while not enforcou and not acertou:
         # o str.lower converter a palavra para minuscula e o strip remove os espaço da frente e do final de uma palavra
-        chute = input('Qual letra? ').strip().lower()
+        chute = input('Qual letra? ').strip().upper()
         print(chute)
         index = 0
-        for letra in palavra_secreta:
-            if chute == letra.lower():
-                letras_acertadas[index] = letra
-                print(f'Encontrei a letra {chute} na posição {index}')
-            index += 1
+        if chute in palavra_secreta:
+            for letra in palavra_secreta:
+                if chute == letra.upper():
+                    letras_acertadas[index] = letra
+                    
+                index += 1
+        else:
+            erros += 1
+        enforcou = erros == 6
+        acertou = '_' not in letras_acertadas
         print(letras_acertadas)
+    
+    if acertou:
+        print('Você ganhou')
+    else:
+        print('Você perdeu')
     print('FIM DE JOGO!')
 
 
