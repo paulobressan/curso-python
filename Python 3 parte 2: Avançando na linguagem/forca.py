@@ -1,4 +1,5 @@
 import os
+import random
 
 def jogar():
     print('*********************************')
@@ -15,13 +16,13 @@ def jogar():
     # Set, o set é utilizado quando temos uma coleção de dados que não pode se repetir, o set ignora a inserção
     # de registro ja existente, portanto um set não contem indece.
 
-    arquivo = open(f'{os.getcwd()}/Python 3 parte 2: Avançando na linguagem/palavras.txt', 'r')
-    #iniciar um array com os valores do arquivo e usar o strip para remover espaços e caracter como /n no inicio e no final
-    palavras = [linha.strip() for linha in arquivo]
-    arquivo.close()
-    print(palavras)
+    # com with o python vai gerenciar a abertura e o fechamento do arquivo
+    with open(f'{os.getcwd()}/Python 3 parte 2: Avançando na linguagem/palavras.txt', 'r') as arquivo:
+        #iniciar um array com os valores do arquivo e usar o strip para remover espaços e caracter como /n no inicio e no final
+        palavras = [linha.strip() for linha in arquivo]
 
-    palavra_secreta = 'banana'.upper()
+    # pegando um elemento da lista de acordo com um numero randomico de 0 até o tamanho da lista.
+    palavra_secreta = palavras[random.randrange(0, len(palavras))].upper()
     # Criando uma lista
     letras_acertadas = ['_' for letra in palavra_secreta]
     enforcou = False
