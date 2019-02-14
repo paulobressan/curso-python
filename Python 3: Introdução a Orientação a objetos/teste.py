@@ -12,4 +12,3 @@ def saca(conta, valor):
 def extrato(conta):
     print(f"saldo é {conta['saldo']}")
 
-conta = cria_conta()
