@@ -20,6 +20,18 @@ class Conta:
         self.saca(valor)
         destino.deposita(valor)
 
+    def get_saldo (self):
+        return self.__saldo
+
+    def get_titular(self):
+        return self.__titular
+
+    def get_limite(self):
+        return self.__limite
+
+    def set_limite(self, valor):
+        self.__limite = valor
+
 conta = Conta(10, 'paulo', 150, 500)
 conta2 = Conta(11, 'teste', 200, 500)
 conta2.transferir(20, conta)
