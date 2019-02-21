@@ -26,6 +26,7 @@ class Programa:
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self._likes} Likes'
 
+
 # Herdando da classe Programa
 class Filme(Programa):
     # Utilizando o construtor da classe Pai
@@ -36,6 +37,8 @@ class Filme(Programa):
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self._likes} Likes - {self.duracao} duração'
 
+    def __repr__(self):
+        return f"Filme(nome = '{self._nome}', ano = {self.ano}, duração = {self.duracao}, likes = {self.likes})"
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
@@ -49,10 +52,9 @@ class Serie(Programa):
 vingadores = Filme("Vingadores - Guerra infinita", 2018, 160)
 vingadores.dar_like()
 
-
 atlanta = Serie("Atlanta", 2018, 2)
 
 filmes_e_series = [vingadores, atlanta]
 
 for programa in filmes_e_series:
-    print(programa)
+    print(repr(programa))
