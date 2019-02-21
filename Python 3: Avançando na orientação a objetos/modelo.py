@@ -1,3 +1,6 @@
+from numpy.distutils.system_info import atlas_3_10_blas_info
+
+
 class Programa:
     def __init__(self, nome, ano):
         self._nome = nome.title()
@@ -19,6 +22,9 @@ class Programa:
     def dar_like(self):
         self._likes += 1
 
+    # Metodo subscrito para sobrescrever o texto de retorno padrão da classe
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self._likes} Likes'
 
 # Herdando da classe Programa
 class Filme(Programa):
@@ -27,15 +33,26 @@ class Filme(Programa):
         super().__init__(nome, ano)
         self.duracao = duracao
 
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self._likes} Likes - {self.duracao} duração'
+
 
 class Serie(Programa):
     def __init__(self, nome, ano, temporadas):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self._likes} Likes {self.temporadas} temporadas'
+
 
 vingadores = Filme("Vingadores - Guerra infinita", 2018, 160)
-print(vingadores.nome)
 vingadores.dar_like()
 
+
 atlanta = Serie("Atlanta", 2018, 2)
+
+filmes_e_series = [vingadores, atlanta]
+
+for programa in filmes_e_series:
+    print(programa)
