@@ -1,7 +1,6 @@
-from numpy.distutils.system_info import atlas_3_10_blas_info
+from abc import ABCMeta, abstractmethod
 
-
-class Programa:
+class Programa(metaclass= ABCMeta):
     def __init__(self, nome, ano):
         self._nome = nome.title()
         self.ano = ano
@@ -22,6 +21,8 @@ class Programa:
     def dar_like(self):
         self._likes += 1
 
+    # Tornando metodo obrigatóriamente subscrito pelas classes filhas
+    @abstractmethod
     # Metodo subscrito para sobrescrever o texto de retorno padrão da classe
     def __str__(self):
         return f'{self._nome} - {self.ano} - {self._likes} Likes'
